@@ -2,6 +2,7 @@
 const express = require("express")
 const https = require("https")
 const fs = require("fs")
+const cors = require('cors');
 require("dotenv").config()
 
 //local module
@@ -9,7 +10,9 @@ const mySettings = require('./routes/mySettings')
 
 //Setting express server
 const app = express()
-
+app.use(cors({
+    origin: 'http://localhost:3000'
+  }));
 const httpsOptions = {
   //ssl path
   key: fs.readFileSync("./ssl/key.pem"),

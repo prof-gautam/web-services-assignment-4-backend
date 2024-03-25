@@ -8,11 +8,11 @@ myLogger = require("../utils/logger")
 const mySetting = express.Router()
 mySetting.use(useragent.express())
 
-mySetting.post("/api/settings", async (req, res) => {
+mySetting.post("/settings", async (req, res) => {
   try {
     const ip = req.ip || req.remoteAddress
     const deviceInfo = `${req.useragent.platform} | ${req.useragent.browser} | ${req.useragent.version} | ${req.useragent.os}`
-    
+
     // Fetch settings from the provided URL
     const response = await axios.get(process.env.GITHUB_SETTING)
     const settings = response.data
